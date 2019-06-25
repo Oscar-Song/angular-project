@@ -12,6 +12,7 @@
         vm.user = null;
         vm.allUsers = [];
         vm.deleteUser = deleteUser;
+        vm.saveUserQuote = saveUserQuote;
 
         initController();
 
@@ -35,10 +36,20 @@
         }
 
         function deleteUser(id) {
+          console.log("entered delete");
             UserService.Delete(id)
             .then(function () {
                 loadAllUsers();
             });
+        }
+
+        function saveUserQuote(){
+          console.log("entered function");
+          console.log(vm.user);
+          UserService.Update(vm.user)
+          .then(function(){
+            loadAllUsers();
+          });
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿<div class="col-md-6 col-md-offset-3">
     <h2>Register</h2>
-    <form name="form" ng-submit="vm.register()" role="form">
+    <form name="form" ng-submit="vm.register()" novalidate role="form">
         <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
             <label for="username">First name</label>
             <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
@@ -8,7 +8,7 @@
         </div>
         <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
             <label for="username">Last name</label>
-            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" required />
+            <input type="text" name="lastName" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
             <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
         </div>
         <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
@@ -20,6 +20,12 @@
             <label for="password">Password</label>
             <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required />
             <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.confirmPassword.$dirty && (form.confirmPassword.$error.required || form.confirmPassword.$error.matchError)}">
+            <label for="password">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" ng-model="confirmPassword" required pw-check match="vm.user.password"/>
+            <span ng-show="form.confirmPassword.$dirty && form.confirmPassword.$error.required" class="help-block">Password confirmation is required</span>
+            <span ng-show="form.confirmPassword.$dirty && !form.confirmPassword.$error.required && form.confirmPassword.$error.matchError" class="help-block">Passwords must match</span>
         </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
