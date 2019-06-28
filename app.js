@@ -44,6 +44,12 @@
             .state('app.my-post.create-post', {
               url: '/create-post',
               templateUrl: 'home/my-post/create-post.view.html',
+              component: 'postForm'
+            })
+            .state('app.my-post.update-post', {
+              url: '/update-post',
+              templateUrl: 'home/my-post/update-post.view.html',
+              component: 'postForm'
             })
             .state('app.my-post.list-posts', {
               url: '/list-posts',

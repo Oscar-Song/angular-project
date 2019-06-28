@@ -8,19 +8,20 @@
   function MyPostController(currentUser, PostService, FlashService, $state){
     var vm = this;
 
-    vm.post = {};
     vm.allMyPosts = null;
 
-    //Get necessary user info for one post. Also to ensure that password and id are not put into part of a post
-    vm.post.username = currentUser.username;
-    vm.post.type = currentUser.status;
-    vm.post.name = currentUser.firstName + " " + currentUser.lastName;
-
-    //TODO: need to get the user and bind some of its info to this post
     vm.createPost = createPost;
+    vm.getPost    = getPost;
+    vm.updatePost = updatePost;
     vm.deletePost = deletePost;
+    vm.resetPost = resetPost;
 
-    loadAllMyPosts();
+    initController();
+
+    function initController(){
+      resetPost();
+      loadAllMyPosts();
+    }
 
     function loadAllMyPosts(){
       PostService.GetAllPosts(currentUser.status)
@@ -29,8 +30,18 @@
         })
     }
 
+    function resetPost(){
+      vm.post = {
+        username: currentUser.username,
+        type: currentUser.status,
+        name: currentUser.firstName + " " + currentUser.lastName
+      };
+    }
+
     function createPost(){
       vm.dataLoading = true;
+      //Create timestamp
+      vm.post.timestamp = Date.now();
       PostService.Create(vm.post)
       .then(function(response){
         if(response.success){
@@ -44,14 +55,28 @@
       });
     }
 
+    function getPost(id){
+      PostService.GetPostById(id)
+      .then(function(post){
+        vm.post = post;
+      });
+    }
+
+    function updatePost(){
+      PostService.Update(vm.post)
+      .then(function() {
+        FlashService.Success('Post updated', true);
+        loadAllMyPosts();
+        $state.go('app.my-post.list-posts');
+      })
+    }
+
     function deletePost(id){
-      console.log("id: ", id);
       PostService.Delete(id)
       .then(function(){
         loadAllMyPosts();
       });
     }
-
 
 
   };

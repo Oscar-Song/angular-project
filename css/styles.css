@@ -12,4 +12,15 @@ li{
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
   padding: 3px 5px;
+  width: 450px;
+}
+
+#crud-link-delete{
+  position: absolute;
+  right: -75px;
+}
+
+#crud-link-update{
+  position: absolute;
+  right: 0px;
 }

@@ -6,18 +6,7 @@
 
   <br>
   <form name="form" ng-submit="vm.createPost()" role="form">
-    <div class="form-group">
-      <label>Title</label>
-      <input type="text" name="title" id="title" class="form-control" ng-model="vm.post.title" placeholder="Software Engineer" required>
-      <span ng-show="form.title.$dirty && form.title.$error.required" class="help-block">Job title is required</span>
-    </div>
-    <div class="form-group">
-      <label>Highest Education</label>
-      <input type="text" name="school" id="school" class="form-control" ng-model="vm.post.education.school" placeholder="Stanford Univeristy, 2018" required>
-      <span ng-show="form.school.$dirty && form.school.$error.required" class="help-block">School for highest education is needed </span>
-      <input type="text" name="degree" id="degree" class="form-control" ng-model="vm.post.education.degree" placeholder="Computer Science, BS" required>
-      <span ng-show="form.degree.$dirty && form.degree.$error.required" class="help-block">Degree for highest education is needed </span>
-    </div>
+    <post-form post='vm.post'></post-form>
     <div class="form-actions">
       <button type="submit" ng-disabled="!form.$valid" class="btn btn-primary">Create Post</button>
     </div>

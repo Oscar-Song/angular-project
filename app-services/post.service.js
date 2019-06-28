@@ -11,8 +11,9 @@
 
     service.GetAllPosts = GetAllPosts;
     service.GetAllPostsByUser = GetPostsByUser;
+    service.GetPostById = GetPostById;
     service.Create = Create;
-    // Service.Update = Update;
+    service.Update = Update;
     service.Delete = Delete;
 
     return service;
@@ -31,6 +32,14 @@
       return deferred.promise;
     }
 
+    function GetPostById(id){
+      var deferred = $q.defer();
+      var filtered = $filter('filter')(getPosts(), {id: id});
+      var post = filtered.length ? filtered[0] : null;
+      deferred.resolve(post);
+      return deferred.promise;
+    }
+
     function Create(post){
       var deferred = $q.defer();
 
@@ -38,7 +47,6 @@
         GetPostsByUser(post.username)
         .then(function(posts){
           if(posts.length >= 5){
-            console.log("found length exceeded");
             deferred.resolve({success: false, message: 'Exceeded maximum allowed posts. Allowed # of posts per user: 5'});
           } else{
             var posts = getPosts();
@@ -55,6 +63,22 @@
           }
         });
       }, 1000);
+
+      return deferred.promise;
+    }
+
+    function Update(post){
+      var deferred = $q.defer();
+
+      var posts = getPosts();
+      for(var i = 0; i < posts.length; i++){
+        if(posts[i].id === post.id){
+          posts[i] = post;
+          break;
+        }
+      }
+      setPosts(posts);
+      deferred.resolve();
 
       return deferred.promise;
     }
@@ -79,7 +103,6 @@
 
 
     // private functions
-
     function getPosts() {
       if(!localStorage.posts){
         localStorage.posts = JSON.stringify([]);
