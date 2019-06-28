@@ -1,0 +1,13 @@
+<div class="col-md-6">
+  <p><a ui-sref="app.my-post.create-post" class="btn btn-primary">Create Post</a></p>
+  <h3>My Posts</h3>
+  <td>
+  <ul>
+      <li ng-repeat="post in vm.allMyPosts">
+          {{post.id}}: {{post.title}}
+          - <a ng-click="vm.deletePost(post.id)">Delete</a>
+      </li>
+  </ul>
+  </td>
+  <p>&nbsp;</p>
+</div>

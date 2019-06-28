@@ -11,10 +11,11 @@
             <input type="text" name="lastName" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
             <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
         </div>
-        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" class="form-control" ng-model="vm.user.username" required />
-            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && (form.username.$error.required || form.username.$invalid) }">
+            <label for="email">Email Address</label>
+            <input type="email" name="username" id="username" class="form-control" ng-model="vm.user.username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Email address is required</span>
+            <span ng-show="form.username.$dirty && !form.username.$error.required && form.username.$invalid" class="help-block">Please enter a valid email address</span>
         </div>
         <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
             <label for="password">Password</label>
@@ -26,6 +27,12 @@
             <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" ng-model="confirmPassword" required pw-check match="vm.user.password"/>
             <span ng-show="form.confirmPassword.$dirty && form.confirmPassword.$error.required" class="help-block">Password confirmation is required</span>
             <span ng-show="form.confirmPassword.$dirty && !form.confirmPassword.$error.required && form.confirmPassword.$error.matchError" class="help-block">Passwords must match</span>
+        </div>
+        <div class="form-group" ng-init="vm.user.status='applicant'">
+            <label>Who are you?</label>
+            <br>
+            <input type="radio" name="applicant" ng-model="vm.user.status" value="applicant">  Applicant
+            <input type="radio" name="employer" ng-model="vm.user.status" value="employer">  Employer
         </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>

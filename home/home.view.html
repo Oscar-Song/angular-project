@@ -1,20 +1,16 @@
 <p><a href="#!/login" class="btn btn-primary">Logout</a></p>
-<br>
-<br>
 ﻿<h1>Hi {{vm.user.firstName}}!</h1>
-<p>You're logged in!!</p>
 
-<label for="quote">Quote:</label>
-<input type="text" name="quote" ng-model="vm.user.quote" value="vm.user.quote">
-<button type="button" name="saveQuote" ng-click="vm.saveUserQuote()">Save Quote</button>
+<h3 ng-show="vm.user.status=='applicant'">
+  <a ui-sref="app.home">Home</a> --
+  <a ui-sref="app.all-posts">Open Positions</a> --
+  <a ui-sref="app.my-post.list-posts">My Resume</a>
+</h3>
 
-<h3>All registered users:</h3>
-<ul>
-    <li ng-repeat="user in vm.allUsers">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
-        <br>
-        {{user.quote}}
-    </li>
-</ul>
-<p>&nbsp;</p>
+<h3 ng-show="vm.user.status=='employer'">
+  <a ui-sref="app.home">Home</a> --
+  <a ui-sref="app.all-posts">Online Resumes</a> --
+  <a ui-sref="app.my-post.list-posts">My Posting</a>
+</h3>
+
+<ui-view></ui-view>
