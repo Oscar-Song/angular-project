@@ -1,16 +1,26 @@
-<p><a href="#!/login" class="btn btn-primary">Logout</a></p>
+<p><a ui-sref="login" class="btn btn-primary">Logout</a></p>
 ﻿<h1>Hi {{vm.user.firstName}}!</h1>
 
-<h3 ng-show="vm.user.status=='applicant'">
-  <a ui-sref="app.home">Home</a> --
-  <a ui-sref="app.all-posts">Open Positions</a> --
-  <a ui-sref="app.my-post.list-posts">My Resume</a>
-</h3>
+<div ng-switch="vm.user.status">
+  <div ng-switch-when="applicant">
+    <h3>
+      <a ui-sref="app.home">Home</a> --
+      <a ui-sref="app.all-posts.list-all-posts">Open Positions</a> --
+      <a ui-sref="app.my-post.list-posts">My Resumes</a>
+    </h3>
+  </div>
+  <div ng-switch-when="employer">
+    <h3>
+      <a ui-sref="app.home">Home</a> --
+      <a ui-sref="app.all-posts.list-all-posts">Online Resumes</a> --
+      <a ui-sref="app.my-post.list-posts">My Open Positions</a>
+    </h3>
+  </div>
+  <div ng-switch-default>
+    <h3>Error: Can not show navigation menu</h3>
+  </div>
+</div>
 
-<h3 ng-show="vm.user.status=='employer'">
-  <a ui-sref="app.home">Home</a> --
-  <a ui-sref="app.all-posts">Online Resumes</a> --
-  <a ui-sref="app.my-post.list-posts">My Posting</a>
-</h3>
+<!-- add a link for admin(myself to view and remove users) -->
 
 <ui-view></ui-view>

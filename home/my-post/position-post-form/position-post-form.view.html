@@ -1,0 +1,29 @@
+<span>*Type in "N/A" if the field does not apply</span>
+<br>
+<br>
+<div class="form-group">
+  <label>Position title</label>
+  <input type="text" name="position" id="position" class="form-control" ng-model="$ctrl.post.position" placeholder="Software Engineer II" required>
+  <span ng-show="form.position.$dirty && form.position.$error.required" class="help-block">Position title is required</span>
+</div>
+<div class="form-group">
+  <label>Job Description</label>
+  <textarea name="description" rows="8" cols="80" class="form-control" ng-model="$ctrl.post.description" placeholder="Offering competitive salary in Santa Monica..." required></textarea>
+  <span ng-show="form.description.$dirty && form.description.$error.required" class="help-block">Job Description is required</span>
+</div>
+<div class="form-group">
+  <label>Required Qualifications</label>
+  <textarea name="requirement" rows="8" cols="80" class="form-control" ng-model="$ctrl.post.requirement" placeholder="Bachelor degree in Computer Science Required. Must have skills such as ..."></textarea>
+</div>
+<div class="form-group">
+  <label>Bonus Qualifications</label>
+  <textarea name="bonus" rows="8" cols="80" class="form-control" ng-model="$ctrl.post.bonus" placeholder="Good to have skills such as..."></textarea>
+</div>
+<div class="form-group">
+  <label>Additional Info</label>
+  <input type="text" name="info" id="info" class="form-control" ng-model="$ctrl.post.additionalInfo">
+</div>
+<div class="form-group">
+  <label>Additional Contact Info</label>
+  <input type="text" name="contact" id="contact" class="form-control" ng-model="$ctrl.post.contact" placeholder="Phone #: (555)123-4567">
+</div>

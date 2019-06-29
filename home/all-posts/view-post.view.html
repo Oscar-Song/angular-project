@@ -1,0 +1,16 @@
+<p><a ui-sref="app.all-posts.list-all-posts" class="btn btn-primary">Back</a></p>
+
+<div class="col-md-6">
+
+  <div ng-switch="vm.post.type">
+    <div ng-switch-when="applicant">
+      <resume-post post="vm.post"></resume-post>
+    </div>
+    <div ng-switch-when="employer">
+      <position-post post="vm.post"></position-post>
+    </div>
+    <div ng-switch-default>
+      <h1>Sum Ting Wong!</h1>
+    </div>
+  </div>
+</div>

@@ -24,7 +24,7 @@
     }
 
     function loadAllMyPosts(){
-      PostService.GetAllPosts(currentUser.status)
+      PostService.GetAllPostsByUser(currentUser.username)
         .then(function(posts){
           vm.allMyPosts = posts;
         })
@@ -77,8 +77,6 @@
         loadAllMyPosts();
       });
     }
-
-
   };
 
 })();

@@ -2,15 +2,15 @@
   <p><a ui-sref="app.my-post.create-post" ng-click="vm.resetPost()" class="btn btn-primary">New Post</a></p>
   <h3>My Posts</h3>
   <td>
-  <ul>
+  <ol>
       <li ng-repeat="post in vm.allMyPosts">
-          {{post.id}}: {{post.title}}. {{post.timestamp | date: 'medium'}}
-          <a id="crud-link-update" ng-click="vm.getPost(post.id)" ui-sref="app.my-post.update-post">Update</a>
-          <a id="crud-link-delete" ng-click="vm.deletePost(post.id)">Delete</a>
-          <!-- TODO: Make the whole grid so once clicked on the click takes to update page,
-          which has the same format as the create page. Move delete outside the grid. -->
+        <a ng-click="vm.getPost(post.id)" ui-sref="app.my-post.update-post">
+          <span ng-if="post.type=='applicant'">{{post.title}}. {{post.timestamp | date: 'medium'}}</span>
+          <span ng-if="post.type=='employer'">{{post.position}}. {{post.timestamp | date: 'medium'}}</span>
+        </a>
+        <a id="crud-link-delete" ng-click="vm.deletePost(post.id)">- Delete</a>
       </li>
-  </ul>
+  </ol>
   </td>
   <p>&nbsp;</p>
 </div>

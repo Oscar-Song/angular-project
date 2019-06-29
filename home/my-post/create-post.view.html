@@ -6,7 +6,17 @@
 
   <br>
   <form name="form" ng-submit="vm.createPost()" role="form">
-    <post-form post='vm.post'></post-form>
+    <div ng-switch="vm.post.type">
+      <div ng-switch-when="employer">
+        <position-post-form post="vm.post"></position-post-form>
+      </div>
+      <div ng-switch-when="applicant">
+        <resume-post-form post='vm.post'></resume-post-form>
+      </div>
+      <div ng-switch-default>
+        <h1>Error: Form to create post is missing</h1>
+      </div>
+    </div>
     <div class="form-actions">
       <button type="submit" ng-disabled="!form.$valid" class="btn btn-primary">Create Post</button>
     </div>

@@ -1,0 +1,33 @@
+<span>*Type in "N/A" if the field does not apply</span>
+<br>
+<br>
+<div class="form-group">
+  <label>Title</label>
+  <input type="text" name="title" id="title" class="form-control" ng-model="$ctrl.post.title" placeholder="Software Engineer" required>
+  <span ng-show="form.title.$dirty && form.title.$error.required" class="help-block">Job title is required</span>
+</div>
+<div class="form-group">
+  <label>Highest Education</label>
+  <input type="text" name="school" id="school" class="form-control" ng-model="$ctrl.post.education.school" placeholder="Stanford Univeristy, 2018" required>
+  <span ng-show="form.school.$dirty && form.school.$error.required" class="help-block">School for highest education is needed </span>
+  <input type="text" name="degree" id="degree" class="form-control" ng-model="$ctrl.post.education.degree" placeholder="Computer Science, BS" required>
+  <span ng-show="form.degree.$dirty && form.degree.$error.required" class="help-block">Degree for highest education is needed </span>
+</div>
+<div class="form-group">
+  <label>Experience</label>
+  <textarea name="experience" rows="8" cols="80" class="form-control" ng-model="$ctrl.post.experience" placeholder="Software Developer at Google, 2014-present... " required></textarea>
+  <span ng-show="form.experience.$dirty && form.experience.$error.required" class="help-block">Experience is required</span>
+</div>
+<div class="form-group">
+  <label>Skills</label>
+  <input type="text" name="skills" id="skills" class="form-control" ng-model="$ctrl.post.skills" placeholder="JavaScript, HTML, Python, ..." required>
+  <span ng-show="form.skills.$dirty && form.skills.$error.required" class="help-block">Skill is required</span>
+</div>
+<div class="form-group">
+  <label>Additional Info</label>
+  <input type="text" name="info" id="info" class="form-control" ng-model="$ctrl.post.additionalInfo">
+</div>
+<div class="form-group">
+  <label>Additional Contact Info</label>
+  <input type="text" name="contact" id="contact" class="form-control" ng-model="$ctrl.post.contact" placeholder="Phone #: (555)123-4567">
+</div>

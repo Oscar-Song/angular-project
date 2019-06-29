@@ -30,8 +30,19 @@
               controllerAs: 'vm'
             })
             .state('app.all-posts',{
+              abstract: true,
               url: '/all-posts',
-              templateUrl: 'home/all-posts/all-posts.view.html'
+              templateUrl: 'home/all-posts/all-posts.view.html',
+              controller: 'AllPostsController',
+              controllerAs: 'vm'
+            })
+            .state('app.all-posts.list-all-posts', {
+              url:'/list-all-posts',
+              templateUrl: 'home/all-posts/list-all-posts.view.html'
+            })
+            .state('app.all-posts.view-post', {
+              url:'/view-post',
+              templateUrl: 'home/all-posts/view-post.view.html'
             })
 
             .state('app.my-post', {
@@ -44,12 +55,10 @@
             .state('app.my-post.create-post', {
               url: '/create-post',
               templateUrl: 'home/my-post/create-post.view.html',
-              component: 'postForm'
             })
             .state('app.my-post.update-post', {
               url: '/update-post',
               templateUrl: 'home/my-post/update-post.view.html',
-              component: 'postForm'
             })
             .state('app.my-post.list-posts', {
               url: '/list-posts',

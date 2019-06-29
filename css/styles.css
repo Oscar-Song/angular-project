@@ -1,26 +1,21 @@
-ul {
-  list-style: none;
+ol {
+  list-style: decimal;
   margin: 0;
   padding: 0;
 }
 
 li{
   background-color: white;
-  display: block;
+  /* display: block; */
   border: 1px;
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
   padding: 3px 5px;
-  width: 450px;
+  width: 500px;
 }
 
 #crud-link-delete{
   position: absolute;
-  right: -75px;
-}
-
-#crud-link-update{
-  position: absolute;
-  right: 0px;
+  right: -100px;
 }

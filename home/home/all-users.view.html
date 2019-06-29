@@ -3,12 +3,12 @@
 
   <h3>All registered users:</h3>
   <td>
-  <ul>
+  <ol>
       <li ng-repeat="user in vm.allUsers">
           {{user.firstName}} {{user.lastName}}, {{user.status}}
           - <a ng-click="vm.deleteUser(user.id)">Delete</a>
       </li>
-  </ul>
+  </ol>
   </td>
   <p>&nbsp;</p>
 </div>
