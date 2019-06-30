@@ -19,3 +19,16 @@ li{
   position: absolute;
   right: -100px;
 }
+
+div.home-info{
+  display: inline-block;
+  text-align: center;
+}
+div.home-info img{
+  float: left;
+}
+
+div.home-info span{
+  display: block;
+  margin-left: 20px;
+}

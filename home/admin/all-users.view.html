@@ -4,7 +4,7 @@
   <h3>All registered users:</h3>
   <td>
   <ol>
-      <li ng-repeat="user in vm.allUsers">
+      <li ng-repeat="user in vm.allUsers" ng-hide="vm.isUserAdmin(user.username)">
           {{user.firstName}} {{user.lastName}}, {{user.status}}
           - <a ng-click="vm.deleteUser(user.id)">Delete</a>
       </li>

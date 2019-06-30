@@ -18,16 +18,27 @@
                 currentUser: ['UserService', '$rootScope', function(UserService, $rootScope){
                   return UserService.GetByUsername($rootScope.globals.currentUser.username);
                 }],
-                allUsers: ['UserService', function(UserService){
-                  return UserService.GetAll();
-                }]
+                isUserAdmin: function(){
+                  return function(username){
+                    return username === "admin@admin";
+                  }
+                }
               }
             })
             .state('app.home', {
               url: '/',
-              templateUrl: 'home/home/all-users.view.html',
-              controller: 'HomeController',
-              controllerAs: 'vm'
+              templateUrl: 'home/home/home-info.view.html'
+            })
+            .state('app.admin', {
+              url: '/admin',
+              templateUrl: 'home/admin/all-users.view.html',
+              controller: 'AllUsersController',
+              controllerAs: 'vm',
+              resolve:{
+                allUsers: ['UserService', function(UserService){
+                  return UserService.GetAll();
+                }]
+              }
             })
             .state('app.all-posts',{
               abstract: true,

@@ -7,6 +7,7 @@
       <a ui-sref="app.home">Home</a> --
       <a ui-sref="app.all-posts.list-all-posts">Open Positions</a> --
       <a ui-sref="app.my-post.list-posts">My Resumes</a>
+      <a ng-show='vm.isUserAdmin;' ui-sref="app.admin">-- Admin</a>
     </h3>
   </div>
   <div ng-switch-when="employer">
